@@ -25,13 +25,17 @@ import java.util.Vector;
  */
 public class Thulac {
 	/**
-	 * Run the segmentation program with argument {@code segOnly}, taking input from the
-	 * given {@link String} and return the segmented output as a {@link String}.
+	 * This method runs the segmentation program with argument {@code segOnly}. It takes input from the
+	 * given {@link String} input and returns the segmented output as a {@link String}. The model must be
+	 * placed in "models/" in the working directory.
 	 *
 	 * @param input
 	 * 		The input {@link String}.
 	 * @param segOnly
-	 * 		Whether to output only segments.
+	 * 		Set this to false to return segmented along with different parts of speech tagged.
+	 * 		(e.g. 今天_t 的_u 太阳_n 特别_d 红_a 。_w )
+	 * 		Set this to false to return only the segmentation.
+	 * 		(e.g. 今天 的 太阳 特别 红 。)
 	 *
 	 * @return The segmented output as a {@link String}.
 	 *
@@ -94,6 +98,7 @@ public class Thulac {
 		split(inputProvider, outputHandler, segOnly);
 	}
 
+
 	/**
 	 * Run the segmentation program with argument {@code segOnly} and default values
 	 * for all others.
@@ -102,12 +107,15 @@ public class Thulac {
 	 * 		The {@link IInputProvider} instance to provide input.
 	 * @param output
 	 * 		The {@link IOutputHandler} instance to handle output.
-	 * @param segOnly
-	 * 		Whether to output only segments.
+	 *@param segOnly
+	 * 		Set this to false to return segmented along with different parts of speech labled.
+	 * 		(e.g. 今天_t 的_u 太阳_n 特别_d 红_a 。_w )
+	 * 		Set this to false to return only the segmentation.
+	 * 		(e.g. 今天 的 太阳 特别 红 。)
 	 *
 	 * @throws IOException
-	 * 		If I/O of either {@code input}, {@code output} or one of the model files
-	 * 		resulted in an exception.
+	 * 		If I/O of either {@code input}, {@code output} or one of the model files results
+	 * 		in an exception.
 	 */
 	public static void split(IInputProvider input, IOutputHandler output, boolean segOnly)
 			throws IOException {
