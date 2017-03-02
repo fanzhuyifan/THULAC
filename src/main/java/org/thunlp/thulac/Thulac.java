@@ -20,22 +20,18 @@ import java.util.List;
 import java.util.Vector;
 
 /**
- * The central class which acts as core of the THULAC API. It provides several
- * convenient methods make things easier for users.
+ * The central class that acts as core of the THULAC API. It provides several
+ * methods to convenient users.
  */
 public class Thulac {
 	/**
-	 * This method runs the segmentation program with argument {@code segOnly}. It takes input from the
-	 * given {@link String} input and returns the segmented output as a {@link String}. The model must be
-	 * placed in "models/" in the working directory.
+	 * Runs the segmentation program with argument {@code segOnly}, taking input from the
+	 * given {@link String} and returns the segmented output as a {@link String}.
 	 *
 	 * @param input
 	 * 		The input {@link String}.
 	 * @param segOnly
-	 * 		Set this to false to return segmented along with different parts of speech tagged.
-	 * 		(e.g. 今天_t 的_u 太阳_n 特别_d 红_a 。_w )
-	 * 		Set this to false to return only the segmentation.
-	 * 		(e.g. 今天 的 太阳 特别 红 。)
+	 * 		Whether to output only segments.
 	 *
 	 * @return The segmented output as a {@link String}.
 	 *
@@ -50,8 +46,8 @@ public class Thulac {
 	}
 
 	/**
-	 * Run the segmentation program with argument {@code segOnly}, taking input from the
-	 * given {@link File} and output the segmented return to a given {@link File}.<br>
+	 * Runs the segmentation program with argument {@code segOnly}, taking input from the
+	 * given {@link File} and outputs the segmented result to a given {@link File}.<br>
 	 * This method returns directly if either {@code inputFile} or {@code outputFile}
 	 * is null.
 	 *
@@ -63,7 +59,8 @@ public class Thulac {
 	 * 		Whether to output only segments.
 	 *
 	 * @throws IOException
-	 * 		If one of the model files fails to load or either the input file or the output
+	 * 		If one of the model files fails to load, or either the input file or the
+	 * 		output
 	 * 		file is {@code null}.
 	 */
 	public static void split(String inputFile, String outputFile, boolean segOnly)
@@ -75,8 +72,8 @@ public class Thulac {
 	}
 
 	/**
-	 * Run the segmentation program with argument {@code segOnly}, taking input from the
-	 * given {@link File} and output the segmented return to a given {@link File}.
+	 * Runs the segmentation program with argument {@code segOnly}, taking input from the
+	 * given {@link File} and outputs the segmented return to a given {@link File}.
 	 *
 	 * @param input
 	 * 		The input {@link File}.
@@ -86,7 +83,8 @@ public class Thulac {
 	 * 		Whether to output only segments.
 	 *
 	 * @throws IOException
-	 * 		If one of the model files fails to load or either the input file or the output
+	 * 		If one of the model files fails to load, or either the input file or the
+	 * 		output
 	 * 		file is {@code null}.
 	 */
 	public static void split(File input, File output, boolean segOnly)
@@ -98,24 +96,20 @@ public class Thulac {
 		split(inputProvider, outputHandler, segOnly);
 	}
 
-
 	/**
-	 * Run the segmentation program with argument {@code segOnly} and default values
+	 * Runs the segmentation program with argument {@code segOnly} and default values
 	 * for all others.
 	 *
 	 * @param input
 	 * 		The {@link IInputProvider} instance to provide input.
 	 * @param output
 	 * 		The {@link IOutputHandler} instance to handle output.
-	 *@param segOnly
-	 * 		Set this to false to return segmented along with different parts of speech labled.
-	 * 		(e.g. 今天_t 的_u 太阳_n 特别_d 红_a 。_w )
-	 * 		Set this to false to return only the segmentation.
-	 * 		(e.g. 今天 的 太阳 特别 红 。)
+	 * @param segOnly
+	 * 		Whether to output only segments.
 	 *
 	 * @throws IOException
-	 * 		If I/O of either {@code input}, {@code output} or one of the model files results
-	 * 		in an exception.
+	 * 		If I/O of either {@code input}, {@code output} or one of the model files
+	 * 		throws an exception.
 	 */
 	public static void split(IInputProvider input, IOutputHandler output, boolean segOnly)
 			throws IOException {
@@ -126,9 +120,9 @@ public class Thulac {
 	 * Run the segmentation program with full arguments.
 	 *
 	 * @param modelDir
-	 * 		The directory under which the model files are located.
+	 * 		The directory where model files are located.
 	 * @param separator
-	 * 		The separator to use to separate words and tags.
+	 * 		The separator between words and tags.
 	 * @param userDict
 	 * 		The optional file name of the user-specified dictionary.
 	 * @param useT2S
@@ -145,7 +139,7 @@ public class Thulac {
 	 *
 	 * @throws IOException
 	 * 		If I/O of either {@code input}, {@code output} or one of the model files
-	 * 		resulted in an exception.
+	 * 		throws an exception.
 	 */
 	public static void split(
 			String modelDir, char separator, String userDict,
